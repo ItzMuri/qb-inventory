@@ -20,11 +20,12 @@
                 <div class="player-inventory-header" :class="{ 'centered-inventory-header': shouldCenterInventory }">
                     <div class="labels-container">
                         <div class="inventory-label">
+                            <span class="inventory-icon"><i class="fa-solid fa-person-rays"></i></span>
                             <p>{{ inventoryLabel }}</p>
                         </div>
                         <div class="current-weight">
-                            <p>{{ (playerWeight / 1000).toFixed(1) }} / {{ (maxWeight / 1000).toFixed(1) }}</p>
-                        </div>
+                            <p><i class="fa-solid fa-weight-scale fa-beat-fade" style="color: #C5FF00;"></i>&nbsp; {{ (playerWeight / 1000).toFixed(1) }} KG / {{ (maxWeight / 1000).toFixed(1) }} KG </p>
+                        </div>                          
                     </div>
                     <div class="weight-bar">
                         <div class="weight-bar-fill" :style="{ width: Math.min((playerWeight / maxWeight) * 100, 100) + '%' }" :class="weightBarClass"></div>
@@ -71,17 +72,28 @@
                 </div>
                 <div class="other-inventory-header" v-if="!isOtherInventoryEmpty">
                     <div class="labels-container">
+                        <!-- Inventory Label -->
                         <div class="inventory-label">
+                            <span class="inventory-icon1"><i class="fa-brands fa-dropbox"></i></span>
                             <p>{{ otherInventoryLabel }}</p>
                         </div>
+                        <!-- Current Weight -->
                         <div class="current-weight">
-                            <p>{{ (otherInventoryWeight / 1000).toFixed(1) }} / {{(otherInventoryMaxWeight / 1000).toFixed(1) }}</p>
+                            <p>
+                                <!-- Weight Scale Icon -->
+                                <i class="fa-solid fa-weight-scale fa-beat-fade" style="color: #C5FF00;"></i>&nbsp;
+                                <!-- Current Weight / Max Weight -->
+                                {{ (otherInventoryWeight / 1000).toFixed(1) }} KG / {{(otherInventoryMaxWeight / 1000).toFixed(1) }} KG
+                            </p>
                         </div>
                     </div>
+                    <!-- Weight Bar -->
                     <div class="weight-bar">
+                        <!-- Weight Bar Fill -->
                         <div class="weight-bar-fill" :style="{ width: Math.min((otherInventoryWeight / otherInventoryMaxWeight) * 100, 100) + '%' }" :class="otherWeightBarClass"></div>
                     </div>
                 </div>
+                
                 <div class="other-inventory" v-if="!isOtherInventoryEmpty">
                     <div class="item-grid">
                         <div v-for="slot in otherInventorySlots" :key="slot" class="item-slot" :data-slot="slot" @mousedown="event => handleMouseDown(event, slot, 'other')" @dragover.prevent>
@@ -132,10 +144,10 @@
                                 v-if="getHotbarItemInSlot(slot).info && 'quality' in getHotbarItemInSlot(slot).info"
                                 :style="{ width: (getHotbarItemInSlot(slot).info.quality / 100) * 100 + '%' }"
                                 :class="{
-                                     'high': getHotbarItemInSlot(slot).info.quality > 75,
-                                     'medium': getHotbarItemInSlot(slot).info.quality <= 75 && getHotbarItemInSlot(slot).info.quality > 25,
-                                     'low': getHotbarItemInSlot(slot).info.quality <= 25
-                                 }"
+                                        'high': getHotbarItemInSlot(slot).info.quality > 75,
+                                        'medium': getHotbarItemInSlot(slot).info.quality <= 75 && getHotbarItemInSlot(slot).info.quality > 25,
+                                        'low': getHotbarItemInSlot(slot).info.quality <= 25
+                                }"
                             ></div>
                             <div class="item-slot-durability-fill" v-else style="width: 0%"></div>
                         </div>
@@ -191,26 +203,44 @@
                 </div>
             </div>
             <ul v-if="showContextMenu" class="context-menu" :style="{ top: contextMenuPosition.top, left: contextMenuPosition.left }">
-                <li v-if="contextMenuItem.useable" @click="useItem(contextMenuItem)">Use</li>
+                <li v-if="contextMenuItem.useable" @click="useItem(contextMenuItem)">
+                    <i class="fa-solid fa-group-arrows-rotate fa-fade" style="color: #C5FF00;"></i>&nbsp; Use</li>
                 <li @mouseover="showSubmenu = true" @mouseleave="showSubmenu = false">
-                    Give
+                    <i class="fa-solid fa-hand" style="color: #C5FF00;" ></i>&nbsp; Give
                     <ul v-if="showSubmenu" class="submenu">
-                        <li @click="giveItem(contextMenuItem, 1)">Single</li>
-                        <li @click="giveItem(contextMenuItem, 'half')">Half</li>
-                        <li @click="giveItem(contextMenuItem, 'all')">All</li>
+                        <li @click="giveItem(contextMenuItem, 1)">
+                            <i class="fa-solid fa-1" style="color: #C5FF00;"></i>&nbsp;Single
+                        </li>
+                        <li @click="giveItem(contextMenuItem, 'half')">
+                            <i class="fa-solid fa-scissors" style="color: #C5FF00;"></i>&nbsp;Half
+                        </li>
+                        <li @click="giveItem(contextMenuItem, 'all')">
+                            <i class="fa-solid fa-reply-all" style="color: #C5FF00;"></i>&nbsp;All
+                        </li>
                     </ul>
                 </li>
                 <li @mouseover="showSubmenu = true" @mouseleave="showSubmenu = false">
-                    Drop
+                    <i class="fa-solid fa-arrow-down" style="color: #C5FF00;"></i>&nbsp; Drop
                     <ul v-if="showSubmenu" class="submenu">
-                        <li @click="dropItem(contextMenuItem, 1)">Single</li>
-                        <li @click="dropItem(contextMenuItem, 'half')">Half</li>
-                        <li @click="dropItem(contextMenuItem, 'all')">All</li>
+                
+                        <li @click="dropItem(contextMenuItem, 1)">
+                            <i class="fa-solid fa-1" style="color: #C5FF00;"></i>&nbsp;Single
+                        </li>
+                        <li @click="dropItem(contextMenuItem, 'half')">
+                            <i class="fa-solid fa-scissors" style="color: #C5FF00;"></i>&nbsp;Half
+                        </li>
+                        <li @click="dropItem(contextMenuItem, 'all')">
+                            <i class="fa-solid fa-reply-all" style="color: #C5FF00;"></i>&nbsp;All
+                        </li>
+
                     </ul>
                 </li>
-                <li @click="splitAndPlaceItem(contextMenuItem, 'player')">Split</li>
-                <li v-if="contextMenuItem.name.includes('weapon_')" @click="copySerial(contextMenuItem)">Copy Serial</li>
-                <li v-if="contextMenuItem.name.includes('weapon_')" @click="openWeaponAttachments(contextMenuItem)">Attachments</li>
+                <li @click="splitAndPlaceItem(contextMenuItem, 'player')">
+                    <i class="fa-solid fa-arrows-split-up-and-left fa-fade" style="color: #C5FF00;" ></i>&nbsp; Split</li>
+                <li v-if="contextMenuItem.name.includes('weapon_')" @click="copySerial(contextMenuItem)">
+                    <i class="fa-solid fa-clipboard" style="color: #C5FF00;" ></i>&nbsp; Copy Serial</li>
+                <li v-if="contextMenuItem.name.includes('weapon_')" @click="openWeaponAttachments(contextMenuItem)">
+                    <i class="fa-solid fa-gun" style="color: #C5FF00;" ></i>&nbsp; Attachments</li>
             </ul>
         </div>
     </body>
