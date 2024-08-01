@@ -626,37 +626,57 @@ font-family: "Quantico";
 
 .custom-tooltip {
     max-width: 16vw;
+    
 }
 
 .custom-tooltip .tooltip-header {
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 13px;
+    padding: 12px;
+    background: radial-gradient(83% 83% at 50% 50%, rgba(180, 180, 180, 0.158), rgba(120, 120, 120, .05)) !important;
+    transition: background 0.35s ease;
+    border: calc(0.092592592vh * 1.4) solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    
 }
 
 .custom-tooltip .tooltip-divider {
     border: none;
     border-top: 1px solid #ccc;
     margin: 5px 0;
+    background: #79eb2d23 !important;
+    border: calc(0.092592592vh * 1.4) solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0.0rem 0.0rem 20px 5px #0000009f inset !important;
 }
 
 .custom-tooltip .tooltip-description {
     font-size: 0.9em;
     margin-bottom: 10px;
+    
 }
 
 .custom-tooltip .tooltip-info {
     font-size: 0.9em;
-    margin: 5px 0;
+    margin:12px 0;
     margin-bottom: 10px;
+    background: radial-gradient(83% 83% at 50% 50%, rgba(180, 180, 180, 0.158), rgba(120, 120, 120, .05)) !important;
+    transition: background 0.35s ease;
+    border: calc(0.092592592vh * 1.4) solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    padding: 5px;
 }
 
 .custom-tooltip .tooltip-info-key {
     font-weight: bold;
+    
 }
 
 .custom-tooltip .tooltip-weight {
     font-size: 0.8em;
-    text-align: right;
+    text-align: center;
+    background: #79eb2d23 !important;
+    border: calc(0.092592592vh * 1.4) solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0.0rem 0.0rem 20px 5px #0000009f inset !important;
 }
 
 .weapon-attachments {
