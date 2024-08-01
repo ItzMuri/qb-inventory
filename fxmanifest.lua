@@ -32,6 +32,7 @@ files {
     'html/main.css',
     'html/app.js',
     'html/images/*.png',
+    'html/inventory_images/*.png',
 }
 
 dependency 'qb-weapons'
