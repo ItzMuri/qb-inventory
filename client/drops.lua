@@ -47,7 +47,7 @@ RegisterNetEvent('qb-inventory:client:setupDropTarget', function(dropId)
     exports['qb-target']:AddTargetEntity(bag, {
         options = {
             {
-                icon = 'fas fa-backpack',
+                icon = 'fa-solid fa-bag-shopping',
                 label = Lang:t('menu.o_bag'),
                 action = function()
                     TriggerServerEvent('qb-inventory:server:openDrop', newDropId)
@@ -85,6 +85,17 @@ RegisterNetEvent('qb-inventory:client:setupDropTarget', function(dropId)
         },
         distance = 2.5,
     })
+    CreateThread(function()
+        while DoesEntityExist(bag) do
+            local coords = GetEntityCoords(bag)
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            local distance = #(coords - playerCoords)
+            if distance < 10.0 then
+                DrawMarker(26, coords.x, coords.y, coords.z + 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.2, 0.2, 192, 235, 117, 150, false, true, 2, nil, nil, false)
+            end
+           Wait(0)
+        end
+    end)
 end)
 
 -- NUI Callbacks
