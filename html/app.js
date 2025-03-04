@@ -697,7 +697,7 @@ const InventoryContainer = Vue.createApp({
                             case "enteramount":
                                 const amounttt  = await axios.post("https://qb-inventory/GiveItemAmount")
                                 amountToGive = amounttt.data;
-                                // console.error(amounttt.data)
+                                // added to give custom amout
                                 break;
                             default:
                                 console.error("Invalid quantity specified.");
