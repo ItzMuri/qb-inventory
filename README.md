@@ -1,3 +1,5 @@
+# Credit [ItzMuri](https://github.com/ItzMuri) 
+
 # qb-inventory
 ![image](https://github.com/user-attachments/assets/01166470-4e1a-4d7b-808a-ed3de1133daa)
 

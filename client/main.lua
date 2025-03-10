@@ -160,6 +160,15 @@ RegisterNetEvent('qb-inventory:client:ItemBox', function(itemData, type, amount)
     })
 end)
 
+RegisterNetEvent('inventory:client:ItemBox', function(itemData, type, amount)
+    SendNUIMessage({
+        action = 'itemBox',
+        item = itemData,
+        type = type,
+        amount = amount
+    })
+end)
+
 RegisterNetEvent('qb-inventory:server:RobPlayer', function(TargetId)
     SendNUIMessage({
         action = 'RobMoney',

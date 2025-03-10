@@ -218,6 +218,9 @@
                         <li @click="giveItem(contextMenuItem, 'all')">
                             <i class="fa-solid fa-reply-all" style="color: #C5FF00;"></i>&nbsp;All
                         </li>
+                        <li @click="giveItem(contextMenuItem, 'enteramount')">
+                            <i class="fa-solid fa-reply-all" style="color: #C5FF00;"></i>&nbsp;Amount
+                        </li>
                     </ul>
                 </li>
                 <li @mouseover="showSubmenu = true" @mouseleave="showSubmenu = false">
@@ -232,6 +235,9 @@
                         </li>
                         <li @click="dropItem(contextMenuItem, 'all')">
                             <i class="fa-solid fa-reply-all" style="color: #C5FF00;"></i>&nbsp;All
+                        </li>
+                        <li @click="dropItem(contextMenuItem, 'enteramount')">
+                            <i class="fa-solid fa-reply-all" style="color: #C5FF00;"></i>&nbsp;Amount
                         </li>
 
                     </ul>

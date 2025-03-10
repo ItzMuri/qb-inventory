@@ -564,6 +564,11 @@ const InventoryContainer = Vue.createApp({
                             case "all":
                                 amountToGive = item.amount;
                                 break;
+                            case "enteramount":
+                                const amounttt  = await axios.post("https://qb-inventory/GiveItemAmount")
+                                amountToGive = amounttt.data;
+                                // console.error(amounttt.data)
+                                break;
                             default:
                                 console.error("Invalid quantity specified.");
                                 return;
@@ -688,6 +693,11 @@ const InventoryContainer = Vue.createApp({
                                 break;
                             case "all":
                                 amountToGive = selectedItem.amount;
+                                break;
+                            case "enteramount":
+                                const amounttt  = await axios.post("https://qb-inventory/GiveItemAmount")
+                                amountToGive = amounttt.data;
+                                // console.error(amounttt.data)
                                 break;
                             default:
                                 console.error("Invalid quantity specified.");
